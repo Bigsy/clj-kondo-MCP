@@ -1,0 +1,4 @@
+{:linters {:unused-private-var {:level :off}
+          :unused-namespace {:level :warning}}
+ :lint-as {}
+ :hooks {}}

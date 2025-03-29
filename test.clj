@@ -1,5 +1,5 @@
 (ns test
   (:require [clojure.string :as str]))
 
-(defn hello [x]
-  (println "Hello" x))
+(defn- unused-fn [x]
+  (+ x 1))

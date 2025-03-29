@@ -15,10 +15,11 @@ const execAsync = promisify(exec);
 
 const isValidLintArgs = (
   args: any
-): args is { file: string } =>
+): args is { file: string; configDir?: string } =>
   typeof args === 'object' &&
   args !== null &&
-  typeof args.file === 'string';
+  typeof args.file === 'string' &&
+  (args.configDir === undefined || typeof args.configDir === 'string');
 
 class ClojureLintServer {
   private server: Server;
@@ -58,6 +59,10 @@ class ClojureLintServer {
                 type: 'string',
                 description: 'Path to the file to lint',
               },
+              configDir: {
+                type: 'string',
+                description: 'Optional path to .clj-kondo config directory. If not provided, clj-kondo will look for .clj-kondo directory in the current and parent directories.',
+              },
             },
             required: ['file'],
           },
@@ -81,8 +86,11 @@ class ClojureLintServer {
       }
 
       try {
+        const configDirArg = request.params.arguments.configDir
+          ? `--config-dir "${request.params.arguments.configDir}"`
+          : '';
         const { stdout, stderr } = await execAsync(
-          `clj-kondo --lint "${request.params.arguments.file}"`
+          `clj-kondo --lint "${request.params.arguments.file}" ${configDirArg}`
         );
 
         return {

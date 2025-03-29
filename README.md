@@ -7,6 +7,8 @@ A Model Context Protocol (MCP) server that provides clj-kondo linting capabiliti
 - Lint Clojure files via MCP tool calls
 - Real-time linting feedback
 - Supports all clj-kondo analysis capabilities
+- Automatic .clj-kondo configuration lookup
+- Optional explicit configuration directory support
 - Lightweight Node.js implementation
 
 ## Installation
@@ -36,9 +38,14 @@ The server provides one tool:
 Parameters:
 ```json
 {
-  "file": "path/to/file.clj"
+  "file": "path/to/file.clj",
+  "configDir": "path/to/config/dir" // Optional
 }
 ```
+
+By default, clj-kondo will automatically look for configuration in the `.clj-kondo` directory in the current and parent directories. You can override this by specifying the `configDir` parameter to point to a specific configuration directory.
+
+For more information about clj-kondo configuration, see the [official documentation](https://github.com/clj-kondo/clj-kondo/blob/master/doc/config.md).
 
 Example response:
 ```

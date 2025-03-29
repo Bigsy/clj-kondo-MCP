@@ -1,0 +1,3 @@
+{:linters {:unused-private-var {:level :warning}}
+ :lint-as {}
+ :hooks {}}
