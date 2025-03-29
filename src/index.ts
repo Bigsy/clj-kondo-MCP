@@ -57,11 +57,11 @@ class ClojureLintServer {
             properties: {
               file: {
                 type: 'string',
-                description: 'Path to the file to lint',
+                description: 'Absolute path to the file to lint (e.g. /Users/name/project/src/file.clj)',
               },
               configDir: {
                 type: 'string',
-                description: 'Optional path to .clj-kondo config directory. If not provided, clj-kondo will look for .clj-kondo directory in the current and parent directories.',
+                description: 'Optional absolute path to .clj-kondo config directory (e.g. /Users/name/project/.clj-kondo). If not provided, clj-kondo will look for .clj-kondo directory in the current and parent directories.',
               },
             },
             required: ['file'],

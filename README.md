@@ -1,15 +1,12 @@
 # clj-kondo MCP Server
 
-A Model Context Protocol (MCP) server that provides clj-kondo linting capabilities for Clojure/ClojureScript/EDN files.
+A Model Context Protocol (MCP) server that provides clj-kondo linting capabilities for Clojure/ClojureScript/EDN files. Handy for Claude code and desktop where there are no built in linting capabilities.
 
 ## Features
 
 - Lint Clojure files via MCP tool calls
-- Real-time linting feedback
 - Supports all clj-kondo analysis capabilities
-- Automatic .clj-kondo configuration lookup
 - Optional explicit configuration directory support
-- Lightweight Node.js implementation
 
 ## Installation
 
@@ -38,10 +35,12 @@ The server provides one tool:
 Parameters:
 ```json
 {
-  "file": "path/to/file.clj",
-  "configDir": "path/to/config/dir" // Optional
+  "file": "/absolute/path/to/file.clj", // Must be absolute path
+  "configDir": "/absolute/path/to/config/dir" // Optional, must be absolute path if provided
 }
 ```
+
+**Note**: Both file and configDir parameters must be absolute paths since the MCP server runs as a separate process. Relative paths will not work correctly.
 
 By default, clj-kondo will automatically look for configuration in the `.clj-kondo` directory in the current and parent directories. You can override this by specifying the `configDir` parameter to point to a specific configuration directory.
 
@@ -55,7 +54,7 @@ linting took 62ms, errors: 0, warnings: 1
 
 ## Configuration
 
-Add to Cline's MCP settings:
+Add to MCP settings:
 ```json
 {
   "clj-kondo": {
@@ -67,12 +66,6 @@ Add to Cline's MCP settings:
 }
 ```
 
-## Development
-
-- Written in TypeScript
-- Uses @modelcontextprotocol/sdk
-- Requires Node.js 16+
-
 ### Build
 ```bash
 npm run build
@@ -82,7 +75,3 @@ npm run build
 ```bash
 npm run dev
 ```
-
-## License
-
-MIT
