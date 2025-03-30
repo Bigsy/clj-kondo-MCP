@@ -51,13 +51,13 @@ class ClojureLintServer {
       tools: [
         {
           name: 'lint_clojure',
-          description: 'Lint a Clojure/ClojureScript/EDN file using clj-kondo',
+          description: 'Lint Clojure/ClojureScript/EDN content using clj-kondo',
           inputSchema: {
             type: 'object',
             properties: {
               file: {
                 type: 'string',
-                description: 'Absolute path to the file to lint (e.g. /Users/name/project/src/file.clj)',
+                description: 'Can be: 1) Absolute path to a file, 2) Directory path (will lint all .clj/.cljs/.cljc files recursively), or 3) Classpath string (obtained via `lein classpath` or `clojure -Spath`)',
               },
               configDir: {
                 type: 'string',
