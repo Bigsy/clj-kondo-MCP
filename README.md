@@ -1,6 +1,6 @@
 # clj-kondo MCP Server [![npm version](https://badge.fury.io/js/clj-kondo-mcp.svg)](https://badge.fury.io/js/clj-kondo-mcp)
 
-A Model Context Protocol (MCP) server that provides clj-kondo linting capabilities for Clojure/ClojureScript/EDN files. Handy for Claude code and desktop where there are no built in linting capabilities.
+A Model Context Protocol (MCP) server that provides clj-kondo linting capabilities for Clojure/ClojureScript/EDN files. Handy for Claude code and desktop where there are no built in linting capabilities. You may want to consider editing your CLAUDE.md asking it to lint after editing.
 
 ## Features
 
