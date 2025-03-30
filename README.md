@@ -10,12 +10,15 @@ A Model Context Protocol (MCP) server that provides clj-kondo linting capabiliti
 
 ## Installation
 
-1. Install dependencies:
+1. Install clj-kondo:
+Make sure you have [clj-kondo](https://github.com/clj-kondo/clj-kondo) installed and available on your system PATH. See the [installation instructions](https://github.com/clj-kondo/clj-kondo/blob/master/doc/install.md) for your platform.
+
+2. Install dependencies:
 ```bash
 npm install
 ```
 
-2. Build the server:
+3. Build the server:
 ```bash
 npm run build
 ```

@@ -90,7 +90,7 @@ class ClojureLintServer {
           ? `--config-dir "${request.params.arguments.configDir}"`
           : '';
         const { stdout, stderr } = await execAsync(
-          `clj-kondo --lint "${request.params.arguments.file}" ${configDirArg}`
+          `clj-kondo --lint "${request.params.arguments.file}" ${configDirArg} --parallel`
         );
 
         return {
