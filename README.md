@@ -1,4 +1,4 @@
-# clj-kondo MCP Server
+# clj-kondo MCP Server [![npm version](https://badge.fury.io/js/clj-kondo-mcp.svg)](https://badge.fury.io/js/clj-kondo-mcp)
 
 A Model Context Protocol (MCP) server that provides clj-kondo linting capabilities for Clojure/ClojureScript/EDN files. Handy for Claude code and desktop where there are no built in linting capabilities.
 
@@ -9,6 +9,26 @@ A Model Context Protocol (MCP) server that provides clj-kondo linting capabiliti
 - Optional explicit configuration directory support
 
 ## Installation
+
+### Quick Install
+```bash
+npx clj-kondo-mcp
+```
+or IDE config
+```json
+{
+  "mcpServers": {
+    "clj-kondo": {
+      "command": "npx",
+      "args": ["clj-kondo-mcp"],
+      "disabled": false,
+      "autoApprove": []
+    }
+  }
+}
+```
+
+### Manual Installation
 
 1. Install clj-kondo:
 Make sure you have [clj-kondo](https://github.com/clj-kondo/clj-kondo) installed and available on your system PATH. See the [installation instructions](https://github.com/clj-kondo/clj-kondo/blob/master/doc/install.md) for your platform.
@@ -59,14 +79,31 @@ For more information about clj-kondo configuration, see the [official documentat
 
 ## Configuration
 
-Add to MCP settings:
+Add to your MCP settings file (for Cline, located at `~/Library/Application Support/Code - Insiders/User/globalStorage/saoudrizwan.claude-dev/settings/cline_mcp_settings.json`):
+
 ```json
 {
-  "clj-kondo": {
-    "command": "node",
-    "args": ["build/index.js"],
-    "disabled": false,
-    "autoApprove": []
+  "mcpServers": {
+    "clj-kondo": {
+      "command": "npx",
+      "args": ["clj-kondo-mcp"],
+      "disabled": false,
+      "autoApprove": []
+    }
+  }
+}
+```
+
+For manual builds, use:
+```json
+{
+  "mcpServers": {
+    "clj-kondo": {
+      "command": "node",
+      "args": ["build/index.js"],
+      "disabled": false,
+      "autoApprove": []
+    }
   }
 }
 ```
