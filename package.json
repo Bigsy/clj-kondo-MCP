@@ -1,5 +1,5 @@
 {
-  "name": "@modelcontextprotocol/server-clj-kondo",
+  "name": "clj-kondo-mcp",
   "version": "0.1.0",
   "description": "MCP server for clj-kondo linting",
   "main": "build/index.js",
