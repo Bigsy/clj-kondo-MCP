@@ -1,4 +1,4 @@
-{:linters {:unused-private-var {:level :off}
-          :unused-namespace {:level :warning}}
+{:linters {:unused-private-var {:level :error}  ; Changed from :off to :error
+          :unused-namespace {:level :error}}    ; Changed from :warning to :error
  :lint-as {}
  :hooks {}}

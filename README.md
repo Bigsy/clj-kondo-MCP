@@ -59,7 +59,8 @@ Parameters:
 ```json
 {
   "file": "/absolute/path/to/file.clj", // Must be absolute path - can be a file, directory, or classpath
-  "configDir": "/absolute/path/to/config/dir" // Optional, must be absolute path if provided
+  "configDir": "/absolute/path/to/config/dir", // Optional, must be absolute path if provided
+  "level": "warning" // Optional, defaults to error level for stricter agentic code analysis
 }
 ```
 

@@ -15,11 +15,12 @@ const execAsync = promisify(exec);
 
 const isValidLintArgs = (
   args: any
-): args is { file: string; configDir?: string } =>
+): args is { file: string; configDir?: string; level?: 'warning' } =>
   typeof args === 'object' &&
   args !== null &&
   typeof args.file === 'string' &&
-  (args.configDir === undefined || typeof args.configDir === 'string');
+  (args.configDir === undefined || typeof args.configDir === 'string') &&
+  (args.level === undefined || args.level === 'warning');
 
 class ClojureLintServer {
   private server: Server;
@@ -63,6 +64,11 @@ class ClojureLintServer {
                 type: 'string',
                 description: 'Optional absolute path to .clj-kondo config directory (e.g. /Users/name/project/.clj-kondo). If not provided, clj-kondo will look for .clj-kondo directory in the current and parent directories.',
               },
+              level: {
+                type: 'string',
+                enum: ['warning'],
+                description: 'Optional linting level. By default all lints are errors. Set to "warning" to use warning level instead.',
+              }
             },
             required: ['file'],
           },
@@ -89,8 +95,11 @@ class ClojureLintServer {
         const configDirArg = request.params.arguments.configDir
           ? `--config-dir "${request.params.arguments.configDir}"`
           : '';
+        const levelArg = request.params.arguments.level === 'warning'
+          ? '--fail-level error'
+          : '--fail-level warning';
         const { stdout, stderr } = await execAsync(
-          `clj-kondo --lint "${request.params.arguments.file}" ${configDirArg} --parallel`
+          `clj-kondo --lint "${request.params.arguments.file}" ${configDirArg} ${levelArg} --parallel`
         );
 
         return {
