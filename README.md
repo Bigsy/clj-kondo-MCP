@@ -1,4 +1,5 @@
 # clj-kondo MCP Server [![npm version](https://badge.fury.io/js/clj-kondo-mcp.svg)](https://badge.fury.io/js/clj-kondo-mcp)
+[![smithery badge](https://smithery.ai/badge/@Bigsy/clj-kondo-MCP)](https://smithery.ai/server/@Bigsy/clj-kondo-MCP)
 
 A Model Context Protocol (MCP) server that provides clj-kondo linting capabilities for Clojure/ClojureScript/EDN files. Handy for Claude code and desktop where there are no built in linting capabilities. You may want to consider editing your CLAUDE.md asking it to lint after editing.
 
@@ -9,6 +10,14 @@ A Model Context Protocol (MCP) server that provides clj-kondo linting capabiliti
 - Optional explicit configuration directory support
 
 ## Installation
+
+### Installing via Smithery
+
+To install Clojure Linter for Claude Desktop automatically via [Smithery](https://smithery.ai/server/@Bigsy/clj-kondo-MCP):
+
+```bash
+npx -y @smithery/cli install @Bigsy/clj-kondo-MCP --client claude
+```
 
 ### Quick Install
 ```bash
